@@ -1,4 +1,7 @@
 lilypad
 vars.fish
 .hypothesis/
+files/
+outputs/
+TEST/
 

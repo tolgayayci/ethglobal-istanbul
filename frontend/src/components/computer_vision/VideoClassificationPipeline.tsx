@@ -1,7 +1,7 @@
 export default function VideoClassificationPipeline() {
   return (
     <div>
-      <h1>VideoClassificationPipeline Pipeline Comp</h1>
+      <h1>Will implement later!</h1>
     </div>
   );
 }

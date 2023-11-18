@@ -2,7 +2,6 @@ import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 import { PipelineData } from "@/types/general";
 import { create } from '@web3-storage/w3up-client'
-import bs58 from 'bs58'
  
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))

@@ -1,0 +1,39 @@
+{
+    "audio": [
+        "AudioClassificationPipeline",
+        "AutomaticSpeechRecognitionPipeline",
+        "TextToAudioPipeline",
+        "ZeroShotAudioClassificationPipeline"
+    ],
+    "computer_vision": [
+        "DepthEstimationPipeline",
+        "ImageClassificationPipeline",
+        "ImageSegmentationPipeline",
+        "ImageToImagePipeline",
+        "ObjectDetectionPipeline",
+        "VideoClassificationPipeline",
+        "ZeroShotImageClassificationPipeline",
+        "ZeroShotObjectDetectionPipeline"
+    ],
+    "natural_language_processing": [
+        "ConversationalPipeline",
+        "FillMaskPipeline",
+        "NerPipeline",
+        "QuestionAnsweringPipeline",
+        "SummarizationPipeline",
+        "TableQuestionAnsweringPipeline",
+        "TextClassificationPipeline",
+        "TextGenerationPipeline",
+        "Text2TextGenerationPipeline",
+        "TokenClassificationPipeline",
+        "TranslationPipeline",
+        "ZeroShotClassificationPipeline"
+    ],
+    "multimodal": [
+        "DocumentQuestionAnsweringPipeline",
+        "FeatureExtractionPipeline",
+        "ImageToTextPipeline",
+        "MaskGenerationPipeline",
+        "VisualQuestionAnsweringPipeline"
+    ]
+}

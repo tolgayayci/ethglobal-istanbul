@@ -21,11 +21,14 @@
                 ],
                 "Image": "quay.io/lukemarsden/sdxl:v0.9-lilypad1-v2",
                 "EnvironmentVariables": [
-                    {{if .PromptEnv}}{{.PromptEnv}}{{else}}"PROMPT=question mark floating in space"{{end}},
                     {{if .SeedEnv}}{{.SeedEnv}}{{else}}"RANDOM_SEED=42"{{end}},
                     "OUTPUT_DIR=/outputs/",
                     "HF_HUB_OFFLINE=1"
                 ]
+                "Entrypoint": [
+                "bash", "-c", "(cd /input && unzip files.zip && rm files.zip && python3 inference.py)"
+                ]
+
             },
             "Engine": "Docker",
             "Language": {
@@ -45,6 +48,16 @@
             "Wasm": {
                 "EntryModule": {}
             },
+            "inputs": [
+            {
+                "CID": {{.filesCID}},
+                "Name": "lilypad_hugging_input",
+                "StorageSource": "IPFS",
+                "path": "/input",
+
+            },
+            ],
+
             "outputs": [
                 {
                     "Name": "outputs",

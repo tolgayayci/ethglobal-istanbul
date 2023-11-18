@@ -1,0 +1,13 @@
+{
+    "task": "image_classification",
+    
+    "files": [
+    {
+        "type": "string",
+        "value": "Hello World"
+    },
+    {
+        "type": "image",
+        "path": "images/1.jpg"
+    }
+]} 

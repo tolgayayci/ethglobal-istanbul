@@ -2,7 +2,7 @@
     "machine": {
         "gpu": 1,
         "cpu": 1000,
-        "ram": 100
+        "ram": 1000
     },
     "job": {
         "APIVersion": "V1beta1",
@@ -15,27 +15,22 @@
                 "Concurrency": 1
             },
             "Docker": {
-                "Entrypoint": [
-                    "bash", "-c",
-                    "python3 inference.py"
-                ],
-                "Image": "quay.io/lukemarsden/sdxl:v0.9-lilypad1-v2",
+                "Image": "justmert/lilypad-hugging:v0.0.14",
                 "EnvironmentVariables": [
                     {{if .SeedEnv}}{{.SeedEnv}}{{else}}"RANDOM_SEED=42"{{end}},
-                    "OUTPUT_DIR=/outputs/",
-                    "HF_HUB_OFFLINE=1"
-                ]
+                    {{.FilesCID}},
+                    "OUTPUT_DIR=/output/",
+                    "INPUT_DIR=/input/"
+                ],
                 "Entrypoint": [
-                "bash", "-c", "(cd /input && unzip files.zip && rm files.zip && python3 inference.py)"
+                "bash", "-c",
+                    "python3 ./inference.py"
                 ]
 
             },
             "Engine": "Docker",
             "Language": {
                 "JobContext": {}
-            },
-            "Network": {
-                "Type": "None"
             },
             "PublisherSpec": {
                 "Type": "Estuary"
@@ -48,21 +43,14 @@
             "Wasm": {
                 "EntryModule": {}
             },
-            "inputs": [
-            {
-                "CID": {{.filesCID}},
-                "Name": "lilypad_hugging_input",
-                "StorageSource": "IPFS",
-                "path": "/input",
-
+            "Network": {
+                "Type": "None"
             },
-            ],
-
             "outputs": [
                 {
-                    "Name": "outputs",
+                    "Name": "output",
                     "StorageSource": "IPFS",
-                    "path": "/outputs"
+                    "path": "/output"
                 }
             ]
         }

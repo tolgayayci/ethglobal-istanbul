@@ -1,10 +1,10 @@
 {
-    "task": "image_classification",
+    "task": "image-classification",
     
     "files": [
     {
-        "type": "string",
-        "value": "Hello World"
+        "type": "text",
+        "path": "data/text.txt"
     },
     {
         "type": "image",

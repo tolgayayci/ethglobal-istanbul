@@ -65,11 +65,7 @@ const AudioItemPage: React.FC<ImageItemPageProps> = ({
       ComponentToRender = "not exist";
   }
 
-  return (
-    <div className="p-8">
-      <ComponentToRender />
-    </div>
-  );
+  return <ComponentToRender />;
 };
 
 export default AudioItemPage;

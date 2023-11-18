@@ -30,9 +30,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return { props: { computerVisionItem: params?.computerVisionItem } };
 };
 
-const AudioItemPage: React.FC<ImageItemPageProps> = ({
-  computerVisionItem,
-}) => {
+const CvItemPage: React.FC<ImageItemPageProps> = ({ computerVisionItem }) => {
   let ComponentToRender;
 
   switch (computerVisionItem) {
@@ -68,4 +66,4 @@ const AudioItemPage: React.FC<ImageItemPageProps> = ({
   return <ComponentToRender />;
 };
 
-export default AudioItemPage;
+export default CvItemPage;

@@ -1,4 +1,5 @@
 import * as z from "zod";
+
 import { jsonGenerator, uploadDirectoryToIpfs } from "@/lib/utils";
 import { TaskTypes } from "@/types/constants";
 
@@ -10,8 +11,8 @@ export async function onSummarizationPipelineFormSubmit(
   data: z.infer<typeof summarizationPipelineFormSchema>
 ) {
   try {
-    const resultJson = jsonGenerator(TaskTypes.QUESTION_ANSWERING, [
-      { type: "text", value: `files/text.txt` },
+    const resultJson = jsonGenerator(TaskTypes.SUMMARIZATION, [
+      { type: "text", path: `files/text.txt` },
     ]);
 
     let blob = new Blob([data.user_input], { type: "text/plain" });
@@ -22,7 +23,9 @@ export async function onSummarizationPipelineFormSubmit(
       new File([blob], "files/" + "text.txt"),
     ];
 
-    return await uploadDirectoryToIpfs(files);
+    const cid = await uploadDirectoryToIpfs(files);
+
+    return cid;
 
     //TODO: Add logic to send cid to backend api
   } catch (error) {

@@ -17,29 +17,6 @@ export function Sidebar({ className }: { className?: string }) {
       <div className="space-y-4 py-4 border-l-2">
         <div className="px-3 py-2">
           <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
-            Audio
-          </h2>
-          <div className="space-y-1 p-2">
-            <ScrollArea>
-              {parsedJson?.audio.map((pipeline, i) => (
-                <Link
-                  key={i}
-                  href={`/audio/${pipeline.replace(/\s+/g, "-").toLowerCase()}`}
-                >
-                  <Button
-                    variant="ghost"
-                    className="w-full justify-start text-[13px]"
-                  >
-                    <FileAudio className="mr-2 h-4 w-4" />
-                    {pipeline}
-                  </Button>
-                </Link>
-              ))}
-            </ScrollArea>
-          </div>
-        </div>
-        <div className="px-3 py-2">
-          <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
             Computer Vision
           </h2>
           <div className="space-y-1 p-2">
@@ -88,6 +65,29 @@ export function Sidebar({ className }: { className?: string }) {
             </div>
           </ScrollArea>
         </div>
+        {/* <div className="px-3 py-2">
+          <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
+            Audio
+          </h2>
+          <div className="space-y-1 p-2">
+            <ScrollArea>
+              {parsedJson?.audio.map((pipeline, i) => (
+                <Link
+                  key={i}
+                  href={`/audio/${pipeline.replace(/\s+/g, "-").toLowerCase()}`}
+                >
+                  <Button
+                    variant="ghost"
+                    className="w-full justify-start text-[13px]"
+                  >
+                    <FileAudio className="mr-2 h-4 w-4" />
+                    {pipeline}
+                  </Button>
+                </Link>
+              ))}
+            </ScrollArea>
+          </div>
+        </div>
         <div className="px-3 py-2">
           <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
             Multimodal
@@ -113,7 +113,7 @@ export function Sidebar({ className }: { className?: string }) {
               ))}
             </div>
           </ScrollArea>
-        </div>
+        </div> */}
       </div>
     </div>
   );

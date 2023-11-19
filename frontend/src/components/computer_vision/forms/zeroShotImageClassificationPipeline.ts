@@ -12,7 +12,7 @@ export async function onZeroShotImageClassificationPipelineFormSubmit(
 ) {
     try {
       const resultJson = jsonGenerator(TaskTypes.ZERO_SHOT_IMAGE_CLASSIFICATION, [
-        { type: 'image', value: `files/${data.image.name}` }
+        { type: 'image', path: `files/${data.image.name}` }
       ])
 
      //TODO: Add logic to upload data to w3 storage and send to cid backend api

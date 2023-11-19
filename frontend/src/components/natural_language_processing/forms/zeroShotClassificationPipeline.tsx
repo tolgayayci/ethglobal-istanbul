@@ -11,7 +11,7 @@ export async function onZeroShotClassificationPipelineFormSubmit(
 ) {
   try {
     const resultJson = jsonGenerator(TaskTypes.TRANSLATION, [
-      { type: "text", value: `files/text.txt` },
+      { type: "text", path: `files/text.txt` },
     ]);
 
     let blob = new Blob([data.user_input], { type: "text/plain" });

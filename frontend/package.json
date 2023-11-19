@@ -16,6 +16,8 @@
     "@radix-ui/react-separator": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
     "@web3-storage/w3up-client": "^11.0.1",
+    "@web3modal/wagmi": "^3.3.2",
+    "axios": "^1.6.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "lucide-react": "^0.292.0",
@@ -24,8 +26,11 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.48.2",
+    "swr": "^2.2.4",
     "tailwind-merge": "^2.0.0",
     "tailwindcss-animate": "^1.0.7",
+    "viem": "^1.19.3",
+    "wagmi": "^1.4.7",
     "zod": "^3.22.4"
   },
   "devDependencies": {

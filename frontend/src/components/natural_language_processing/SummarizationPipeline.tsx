@@ -30,6 +30,8 @@ import { TaskTypes } from "@/types/constants";
 import { AlertDestructive } from "@/components/common/alert-destructive";
 import { AlertSuccess } from "@/components/common/alert-success";
 
+import useSummarizationPipeline from "@/data/nlp/useSummarizationPipeline";
+
 export default function SummarizationPipeline() {
   const summarizationPipelineForm = useForm<
     z.infer<typeof summarizationPipelineFormSchema>
@@ -40,11 +42,18 @@ export default function SummarizationPipeline() {
   const [isLoading, setIsLoading] = useState(false);
   const [cid, setCid] = useState<string>();
 
+  const {
+    data,
+    isLoading: isApiLoading,
+    isError,
+  } = useSummarizationPipeline(cid as string);
+
   const handleSubmit = async (data: any) => {
     setIsLoading(true); // Set loading to true when submission starts
     try {
       const cid = await onSummarizationPipelineFormSubmit(data);
-      // Handle successful submission
+      // Handle successful upload
+
       setCid(cid);
     } catch (error) {
       // Handle errors if needed

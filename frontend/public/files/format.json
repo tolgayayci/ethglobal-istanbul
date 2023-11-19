@@ -1,0 +1,9 @@
+{
+    "task": "summarization",
+    "files": [
+      {
+        "type": "text",
+        "path": "files/text.txt"
+      }
+    ]
+}

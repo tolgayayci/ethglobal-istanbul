@@ -12,7 +12,7 @@ export async function onImageClassificationPipelineFormSubmit(
 ) {
     try {
       const resultJson = jsonGenerator(TaskTypes.IMAGE_CLASSIFICATION, [
-        { type: 'image', value: `files/${data.image.name}` }
+        { type: 'image', path: `files/${data.image.name}` }
       ])
 
      //TODO: Add logic to upload data to w3 storage and send to cid backend api

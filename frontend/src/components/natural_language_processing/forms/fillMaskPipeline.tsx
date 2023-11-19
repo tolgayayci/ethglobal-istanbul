@@ -11,7 +11,7 @@ export async function onFillMaskPipelineFormSubmit(
 ) {
   try {
     const resultJson = jsonGenerator(TaskTypes.FILL_MASK, [
-      { type: "text", value: `files/text.txt` },
+      { type: "text", path: `files/text.txt` },
     ]);
 
     let blob = new Blob([data.user_input], { type: "text/plain" });

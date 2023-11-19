@@ -29,10 +29,7 @@ export function jsonGenerator(taskName: string, items: any) {
   const jsonData = {
     task: taskName,
     files: items.map((item: any) => {
-        if (item.type === 'image') {
-            return { type: item.type, path: item.value };
-        }
-        return { type: item.type, value: item.value };
+        return { type: item.type, path: item.path };
     })
   };
 

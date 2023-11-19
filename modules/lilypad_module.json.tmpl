@@ -15,10 +15,9 @@
                 "Concurrency": 1
             },
             "Docker": {
-                "Image": "justmert/lilypad-hugging:v0.0.14",
+                "Image": "justmert/lilypad-hugging:v0.0.15",
                 "EnvironmentVariables": [
                     {{if .SeedEnv}}{{.SeedEnv}}{{else}}"RANDOM_SEED=42"{{end}},
-                    {{.FilesCID}},
                     "OUTPUT_DIR=/output/",
                     "INPUT_DIR=/input/"
                 ],
@@ -46,6 +45,14 @@
             "Network": {
                 "Type": "None"
             },
+            "inputs": [
+                {
+                    "CID": {{.FilesCID}},
+                    "Name": "input",
+                    "StorageSource": "IPFS",
+                    "path": "/input"
+                }
+            ],
             "outputs": [
                 {
                     "Name": "output",

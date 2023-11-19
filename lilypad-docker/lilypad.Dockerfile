@@ -9,12 +9,10 @@ WORKDIR /app
 # Install transformers, datasets, and evaluate libraries
 RUN pip3 install --no-cache-dir transformers[torch] datasets evaluate
 
-# RUN python -c "from transformers import pipeline; print(pipeline('sentiment-analysis')('we love you'))"
-
-COPY inference.py /app
-
 ENV NVIDIA_DRIVER_CAPABILITIES=compute,utility
 ENV NVIDIA_VISIBLE_DEVICES=all
 
 # Run python script when the container launches
+COPY inference.py .
+
 CMD ["/bin/bash"]

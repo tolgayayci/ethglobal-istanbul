@@ -4,7 +4,7 @@ import logging
 import os
 from enum import Enum
 import requests
-
+DEBUG = True
 
 class TaskType(Enum):
     AUDIO_CLASSIFICATION = "AUDIO-CLASSIFICATION"
@@ -39,7 +39,10 @@ class TaskType(Enum):
 
 
 # Set up logging
-log_file_path = "./outputs/execution.log"
+if DEBUG:
+    log_file_path = "./debug/execution.log"
+else:
+    log_file_path = "/outputs/execution.log"
 
 os.makedirs(os.path.dirname(log_file_path), exist_ok=True)
 # Create a logger
@@ -81,7 +84,10 @@ def request_from_ipfs(cid, path):
 # Read from env variables
 cid = os.environ.get("FilesCID", None)
 if cid is None:
-    raise ValueError("FilesCID not found in environment variables")
+    if DEBUG:
+        cid = "bafybeiexqjadtefzujlzpogzvqmctlibnus3edv74gpcm26t4dp6crqwwi"
+    else:
+        raise ValueError("FilesCID not found in environment variables")
 
 format_json = request_from_ipfs(cid, "files/format.json")
 data = json.loads(format_json)
@@ -101,9 +107,12 @@ for file_info in data.get("files", []):
 task_type = data["task"].upper()
 if task_type not in [str(x.value) for x in TaskType]:
     raise ValueError(f"Task type {task_type} is not supported")
-    
 
-
+def get_response_txt_path():
+    if DEBUG:
+        return "./debug/response.txt"
+    else:
+        return "/outputs/response.txt"
 # Initialize the pipeline based on the task type
 if task_type == TaskType.IMAGE_CLASSIFICATION.value:
     pipe = pipeline(TaskType.IMAGE_CLASSIFICATION.value.lower())
@@ -114,7 +123,7 @@ if task_type == TaskType.IMAGE_CLASSIFICATION.value:
             image_path = file_info["path"]
             items.append(image_path)
     response = pipe(items)
-    with open("./outputs/response.json", "w") as response_file:
+    with open(get_response_txt_path(), "w") as response_file:
         response_file.write(response)
 
 
@@ -128,5 +137,7 @@ elif task_type == TaskType.SUMMARIZATION.value:
             text = read_from_text_file(text_path)
             items.append(text)
     response = pipe(items)
-    with open("./outputs/response.txt", "w") as response_file:
+    if DEBUG:
+        response_json_path = "./debug/response.json"
+    with open(get_response_txt_path(), "w") as response_file:
         response_file.write(str(response))

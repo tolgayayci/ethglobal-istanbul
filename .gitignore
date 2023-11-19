@@ -4,4 +4,7 @@ vars.fish
 files/
 outputs/
 TEST/
+.env.fish
+.env.bash
+debug/
 

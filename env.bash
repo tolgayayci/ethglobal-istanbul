@@ -1,0 +1,1 @@
+export WEB3_PRIVATE_KEY=""
